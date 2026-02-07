@@ -127,6 +127,12 @@ def install_model(model_name: str, checkpoint_dir: Path, force: bool = False) ->
         console.print("Use --force to overwrite")
         return
 
+    if checkpoint_info.url is None:
+        console.print(
+            f"[yellow]⚠[/yellow] {model_name} has no download URL (bundled locally)"
+        )
+        return
+
     console.print(
         f"[cyan]Installing {model_name}:[/cyan] {checkpoint_info.description}"
     )

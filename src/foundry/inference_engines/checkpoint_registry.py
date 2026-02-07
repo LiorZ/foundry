@@ -63,7 +63,7 @@ def append_checkpoint_to_env(checkpoint_dirs: list[Path]) -> bool:
 
 @dataclass
 class RegisteredCheckpoint:
-    url: str
+    url: str | None
     filename: str
     description: str
     sha256: None = None  # Optional: add checksum for verification
@@ -113,5 +113,10 @@ REGISTERED_CHECKPOINTS = {
         url="https://files.ipd.uw.edu/pub/ligandmpnn/solublempnn_v_48_020.pt",
         filename="solublempnn_v_48_020.pt",
         description="SolubleMPNN checkpoint",
+    ),
+    "enhanced_mpnn": RegisteredCheckpoint(
+        url=None,
+        filename="enhanced_mpnn_step_80000.pt",
+        description="Enhanced MPNN fine-tuned from LigandMPNN",
     ),
 }
